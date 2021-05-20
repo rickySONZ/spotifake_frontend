@@ -11,11 +11,13 @@ let tempUserDisplayDiv = document.createElement("div")
 let emailSignInInput = document.createElement("input")
 emailSignInInput.type = "text"
 emailSignInInput.className = "sign-in-input"
+emailSignInInput.placeholder = "Email"
 
 //Defining password input
 let passwordSignInInput = document.createElement("input")
 passwordSignInInput.type = "text"
 passwordSignInInput.className = "sign-in-input"
+passwordSignInInput.placeholder = "Password"
 
 //Defining submit button
 let submitSignInButton = document.createElement("button")
@@ -51,12 +53,14 @@ signInForm.addEventListener('submit', function(e) {
       })
       .then(res => res.json())
       .then(function(object) {
-        // if (object == 200){
-            // front.style.display
-            console.log(object)
+         let obj = object
+         console.log(obj)
 
-        // }
+            user = new User(object)
+            loginCurrentUser(obj)
+
       })
+      .catch(errors => console.log(errors))
   })
 
 

@@ -7,16 +7,19 @@ var registrationbre = document.createElement("br")
 let emailRegistrationInput = document.createElement("input")
 emailRegistrationInput.type = "text"
 emailRegistrationInput.className = "registration-input"
+emailRegistrationInput.placeholder = "Email"
 
 //Defining password input
 let passwordRegistrationInput = document.createElement("input")
 passwordRegistrationInput.type = "text"
 passwordRegistrationInput.className = "registration-input"
+passwordRegistrationInput.placeholder = "Password"
 
 //Defining password confirmation input
 let passwordConfirmationRegistrationInput = document.createElement("input")
 passwordConfirmationRegistrationInput.type = "text"
 passwordConfirmationRegistrationInput.className = "registration-input"
+passwordConfirmationRegistrationInput.placeholder = "Confirm Password"
 
 //Defining submit button
 let submitRegistrationButton = document.createElement("button")
@@ -46,14 +49,17 @@ registrationForm.addEventListener('submit', function(e) {
         body: JSON.stringify({
           email: regData[0].value,
           password: regData[1].value,
-          password_confirmation: regData[2].value,
-          logged_in: true         
+          password_confirmation: regData[2].value,        
         })
        
       })
       .then(res => res.json())
-      
       .then(function(object) {    
-            console.log(new User(object))
+        let obj = object
+        console.log(obj)
+        user = new User(object)
+        loginCurrentUser(obj)      
       })
+      .catch(errors => console.log(errors))
+    
   })
