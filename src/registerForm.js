@@ -34,7 +34,7 @@ document.body.append(registrationForm)
 
 let regData = document.querySelectorAll('.registration-input')
 
-//Event listener for registration form, not really sure what to do with it next, 200 status comes through 
+//Event listener for registration, appends a logout button and sets session
 registrationForm.addEventListener('submit', function(e) {
     
     e.preventDefault()
@@ -59,9 +59,14 @@ registrationForm.addEventListener('submit', function(e) {
         console.log(obj)
         user = new User(object)
         loginCurrentUser(obj)
-        sessionStorage.userID = obj.id      
+        sessionStorage.userID = obj.id
+        regData[0].value = "" 
+        regData[1].value = ""
+        regData[2].value = "" 
+        if (sessionStorage.userID != "undefined"){
+        appendLogOutButton() 
+        }    
       })
-      .then(appendLogOutButton())
       .catch(errors => console.log(errors))
     
   })

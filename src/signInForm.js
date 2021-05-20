@@ -58,11 +58,16 @@ signInForm.addEventListener('submit', function(e) {
         const user = new User(object)
         loginCurrentUser(obj)
         sessionStorage.userID = obj.id
+        formData[0].value = ""
+        formData[1].value = ""
+        if (sessionStorage.userID != "undefined"){
+            appendLogOutButton() 
+            } 
       })
-      .then(appendLogOutButton())
       .catch(errors => console.log(errors))
   })
 
+  
 function fetchUsers(){
     fetch("http://localhost:3000/users")
     .then(r => r.json())
@@ -70,7 +75,7 @@ function fetchUsers(){
     .catch(err => console.warn(err))
 }
 
-
+//Declaration of logout button function, creates a loop with sign in forms
 function appendLogOutButton(){
     logoutButton = document.createElement('button')
     logoutButton.className = "logout-button"
