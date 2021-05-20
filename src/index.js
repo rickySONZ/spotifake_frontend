@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+    fetchUsers();
+    // createSignInForm();
+})
+
+
 loginCurrentUser = (object) => {
     if (object.status == 200){
         signInForm.style.display = "none"

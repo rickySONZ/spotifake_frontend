@@ -58,8 +58,10 @@ registrationForm.addEventListener('submit', function(e) {
         let obj = object
         console.log(obj)
         user = new User(object)
-        loginCurrentUser(obj)      
+        loginCurrentUser(obj)
+        sessionStorage.userID = obj.id      
       })
+      .then(appendLogOutButton())
       .catch(errors => console.log(errors))
     
   })

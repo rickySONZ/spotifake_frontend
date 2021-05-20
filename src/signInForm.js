@@ -53,24 +53,48 @@ signInForm.addEventListener('submit', function(e) {
       })
       .then(res => res.json())
       .then(function(object) {
-         let obj = object
-         console.log(obj)
-
-            user = new User(object)
-            loginCurrentUser(obj)
-
+        let obj = object
+        console.log(obj)
+        const user = new User(object)
+        loginCurrentUser(obj)
+        sessionStorage.userID = obj.id
       })
+      .then(appendLogOutButton())
       .catch(errors => console.log(errors))
   })
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    fetchUsers();
-})
 
 function fetchUsers(){
     fetch("http://localhost:3000/users")
     .then(r => r.json())
     .then(data => console.log(data))
     .catch(err => console.warn(err))
+}
+
+
+function appendLogOutButton(){
+    logoutButton = document.createElement('button')
+    logoutButton.className = "logout-button"
+    logoutButton.innerText = "Log Out"
+    document.body.append(logoutButton)
+    logoutButton.addEventListener("click", (e) => {
+        let sessionID = sessionStorage.userID
+        fetch(`http://localhost:3000/sessions/${sessionID}`, {
+        method: 'DELETE',
+        headers:{
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+             user: ''
+          })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .then(logoutButton.remove())
+        .then(
+            signInForm.style.display = "block",
+            registrationForm.style.display = "block",
+            sessionStorage.userID = ''
+        )
+    })
 }
