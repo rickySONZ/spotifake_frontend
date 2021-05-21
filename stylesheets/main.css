@@ -41,3 +41,11 @@ button.button {
     float: right;
 
 }
+h2.title {
+    text-align: center;
+    margin-top: 1px;
+}
+
+body {
+    background-color: black;
+}

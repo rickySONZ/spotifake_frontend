@@ -8,6 +8,12 @@ let signInTitle = document.createElement("h3")
 signInTitle.innerText = "Sign In Here"
 let signInBreak = document.createElement("br")
 
+// Adding logo to sign out form
+let spotifakeLogo = document.createElement("img")
+spotifakeLogo.src = "/Users/ryanerricson/Development/code/phase-4/spotifake/spotifake_frontend/stylesheets/images/spotifake_in_circles.jpg"
+spotifakeLogo.width = 100
+spotifakeLogo.height = 100
+
 let tempUserDisplayDiv = document.createElement("div")
 
 //Defining email input
@@ -33,10 +39,9 @@ submitSignInButton.classList.add("button")
 signInForm.append(signInTitle, signInBreak, emailSignInInput, signInbre, passwordSignInInput, signInbr, submitSignInButton)
 
 document.body.append(signInForm)
+document.body.append(spotifakeLogo)
 
 let formData = document.querySelectorAll(".sign-in-input")
-
-let front = document.querySelector(".sign-in-form")
 
 //Event listener for sign in form, not really sure what to do with it next, 200 status comes through 
 signInForm.addEventListener('submit', function(e) {
@@ -62,6 +67,7 @@ signInForm.addEventListener('submit', function(e) {
         const user = new User(obj)
         loginCurrentUser(obj)
         sessionStorage.userID = obj.id
+        localStorage.email = obj.email
         formData[0].value = ""
         formData[1].value = ""
         if (sessionStorage.userID != "undefined"){
