@@ -2,8 +2,11 @@
 //Defining signinForm variable
 let signInForm = document.createElement("form")
 signInForm.className = "sign-in-form"
-var signInbr = document.createElement("br")
-var signInbre = document.createElement("br")
+let signInbr = document.createElement("br")
+let signInbre = document.createElement("br")
+let signInTitle = document.createElement("h3")
+signInTitle.innerText = "Sign In Here"
+let signInBreak = document.createElement("br")
 
 let tempUserDisplayDiv = document.createElement("div")
 
@@ -26,7 +29,7 @@ submitSignInButton.innerText = "Sign In"
 
 
 //adding forms and inputs to document
-signInForm.append(emailSignInInput, signInbre, passwordSignInInput, signInbr, submitSignInButton)
+signInForm.append(signInTitle, signInBreak, emailSignInInput, signInbre, passwordSignInInput, signInbr, submitSignInButton)
 
 document.body.append(signInForm)
 
