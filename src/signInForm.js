@@ -64,6 +64,7 @@ signInForm.addEventListener('submit', function(e) {
         formData[0].value = ""
         formData[1].value = ""
         if (sessionStorage.userID != "undefined"){
+            appendLibraryAfterLogin()
             appendLogOutButton() 
             alert(`You have successfully logged in as ${user.email}`)
             } 
