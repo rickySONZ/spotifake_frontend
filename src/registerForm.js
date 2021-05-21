@@ -69,6 +69,7 @@ registrationForm.addEventListener('submit', function(e) {
         regData[1].value = ""
         regData[2].value = "" 
         if (sessionStorage.userID != "undefined"){
+        appendLibraryAfterLogin()
         appendLogOutButton() 
         alert(`You have successfully created an account with the email ${user.email}.`)
         }    
