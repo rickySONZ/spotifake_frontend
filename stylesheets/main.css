@@ -20,14 +20,14 @@
     margin-bottom: 3px;
 }
 .library-div {
-    height: 200px;
-    width: 300px;
-}
-
-body {
-    color: darkgrey; overflow: hidden;
-    
-    
+    height: 750px;
+    width: 750px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    background-color: lightgray;
+    border-radius: 25px;
 }
 
 button.button {
@@ -35,8 +35,7 @@ button.button {
     border-color: black;
     border-width: 2px;
     shape-rendering: inherit;
-    margin: 1px;
-}
+    margin: 1px;}
 
 .logout-button {
     float: right;

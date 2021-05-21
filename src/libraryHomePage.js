@@ -1,6 +1,6 @@
 function appendLibraryAfterLogin(){
     let libraryDiv = document.createElement('div')
-    libraryDiv.classList = 'library-div'
+    libraryDiv.classList.add('library-div')
     document.body.append(libraryDiv)
 
     let sessionID = sessionStorage.userID
