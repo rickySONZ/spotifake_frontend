@@ -13,19 +13,20 @@ let tempUserDisplayDiv = document.createElement("div")
 //Defining email input
 let emailSignInInput = document.createElement("input")
 emailSignInInput.type = "text"
-emailSignInInput.className = "sign-in-input"
+emailSignInInput.classList.add("sign-in-input", "input")
 emailSignInInput.placeholder = "Email"
 
 //Defining password input
 let passwordSignInInput = document.createElement("input")
 passwordSignInInput.type = "text"
-passwordSignInInput.className = "sign-in-input"
+passwordSignInInput.classList.add("sign-in-input", "input")
 passwordSignInInput.placeholder = "Password"
 
 //Defining submit button
 let submitSignInButton = document.createElement("button")
 submitSignInButton.type = "submit"
 submitSignInButton.innerText = "Sign In"
+submitSignInButton.classList.add("button")
 
 
 //adding forms and inputs to document
@@ -64,8 +65,8 @@ signInForm.addEventListener('submit', function(e) {
         formData[0].value = ""
         formData[1].value = ""
         if (sessionStorage.userID != "undefined"){
-            appendLibraryAfterLogin()
             appendLogOutButton() 
+            appendLibraryAfterLogin()
             alert(`You have successfully logged in as ${user.email}`)
             } 
       })
@@ -84,7 +85,7 @@ function fetchUsers(){
 //Declaration of logout button function, creates a loop with sign in forms
 function appendLogOutButton(){
     logoutButton = document.createElement('button')
-    logoutButton.className = "logout-button"
+    logoutButton.classList.add("logout-button", "button")
     logoutButton.innerText = "Log Out"
     document.body.append(logoutButton)
     logoutButton.addEventListener("click", (e) => {
@@ -102,8 +103,8 @@ function appendLogOutButton(){
         })
         .then(res => res.json())
         .then(data => console.log(data))
-        .then(libraryContainer.remove())
         .then(logoutButton.remove())
+        .then(libraryContainer.remove())
         .then(
             signInForm.style.display = "block",
             registrationForm.style.display = "block",

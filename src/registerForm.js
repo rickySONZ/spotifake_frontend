@@ -11,24 +11,25 @@ let registrationbreak = document.createElement("br")
 //Defining email input
 let emailRegistrationInput = document.createElement("input")
 emailRegistrationInput.type = "text"
-emailRegistrationInput.className = "registration-input"
+emailRegistrationInput.classList.add("registration-input", "input")
 emailRegistrationInput.placeholder = "Email"
 
 //Defining password input
 let passwordRegistrationInput = document.createElement("input")
 passwordRegistrationInput.type = "text"
-passwordRegistrationInput.className = "registration-input"
+passwordRegistrationInput.classList.add("registration-input", "input")
 passwordRegistrationInput.placeholder = "Password"
 
 //Defining password confirmation input
 let passwordConfirmationRegistrationInput = document.createElement("input")
 passwordConfirmationRegistrationInput.type = "text"
-passwordConfirmationRegistrationInput.className = "registration-input"
+passwordConfirmationRegistrationInput.classList.add("registration-input", "input")
 passwordConfirmationRegistrationInput.placeholder = "Confirm Password"
 
 //Defining submit button
 let submitRegistrationButton = document.createElement("button")
 submitRegistrationButton.type = "submit"
+submitRegistrationButton.classList.add("button")
 submitRegistrationButton.innerText = "Register Here"
 
 
@@ -69,8 +70,8 @@ registrationForm.addEventListener('submit', function(e) {
         regData[1].value = ""
         regData[2].value = "" 
         if (sessionStorage.userID != "undefined"){
+            appendLogOutButton() 
         appendLibraryAfterLogin()
-        appendLogOutButton() 
         alert(`You have successfully created an account with the email ${user.email}.`)
         }    
       })
