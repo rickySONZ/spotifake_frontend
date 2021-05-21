@@ -19,7 +19,13 @@
     margin-bottom: 3px;
 }
 .library-div {
-    background-color: black;
     height: 200px;
     width: 300px;
+}
+
+body {
+    background-color: darkgrey;
+    width: 100%;
+    height: 100%;
+    
 }
