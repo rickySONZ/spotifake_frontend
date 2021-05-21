@@ -80,6 +80,7 @@ function fetchUsers(){
     .catch(err => console.warn(err))
 }
 
+
 //Declaration of logout button function, creates a loop with sign in forms
 function appendLogOutButton(){
     logoutButton = document.createElement('button')
@@ -88,6 +89,7 @@ function appendLogOutButton(){
     document.body.append(logoutButton)
     logoutButton.addEventListener("click", (e) => {
         let sessionID = sessionStorage.userID
+        let libraryContainer = document.querySelector(".library-div")
         fetch(`http://localhost:3000/sessions/${sessionID}`, {
         method: 'DELETE',
         headers:{
@@ -100,6 +102,7 @@ function appendLogOutButton(){
         })
         .then(res => res.json())
         .then(data => console.log(data))
+        .then(libraryContainer.remove())
         .then(logoutButton.remove())
         .then(
             signInForm.style.display = "block",
