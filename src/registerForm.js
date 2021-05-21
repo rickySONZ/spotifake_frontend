@@ -1,8 +1,12 @@
 let registrationForm = document.createElement("form")
 registrationForm.className = "registration-form"
+
+let registrationTitle = document.createElement('h3')
+registrationTitle.innerText = 'Register Here'
 let registrationbr = document.createElement("br")
 let registrationbre = document.createElement("br")
 let registrationbrea = document.createElement("br")
+let registrationbreak = document.createElement("br")
 
 //Defining email input
 let emailRegistrationInput = document.createElement("input")
@@ -29,7 +33,7 @@ submitRegistrationButton.innerText = "Register Here"
 
 
 //adding forms and inputs to document
-registrationForm.append(emailRegistrationInput, registrationbre, passwordRegistrationInput, registrationbrea, passwordConfirmationRegistrationInput, registrationbr, submitRegistrationButton)
+registrationForm.append(registrationTitle, registrationbreak, emailRegistrationInput, registrationbre, passwordRegistrationInput, registrationbrea, passwordConfirmationRegistrationInput, registrationbr, submitRegistrationButton)
 
 document.body.append(registrationForm)
 
