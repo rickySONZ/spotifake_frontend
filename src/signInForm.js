@@ -55,19 +55,20 @@ signInForm.addEventListener('submit', function(e) {
       .then(function(object) {
         let obj = object
         console.log(obj)
-        const user = new User(object)
+        const user = new User(obj)
         loginCurrentUser(obj)
         sessionStorage.userID = obj.id
         formData[0].value = ""
         formData[1].value = ""
         if (sessionStorage.userID != "undefined"){
             appendLogOutButton() 
+            alert(`You have successfully logged in as ${user.email}`)
             } 
       })
       .catch(errors => console.log(errors))
   })
 
-  
+
 function fetchUsers(){
     fetch("http://localhost:3000/users")
     .then(r => r.json())
