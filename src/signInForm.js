@@ -68,6 +68,7 @@ signInForm.addEventListener('submit', function(e) {
         loginCurrentUser(obj)
         sessionStorage.userID = obj.id
         localStorage.email = obj.email
+        localStorage.library = obj.library
         formData[0].value = ""
         formData[1].value = ""
         if (sessionStorage.userID != "undefined"){
@@ -114,7 +115,9 @@ function appendLogOutButton(){
         .then(
             signInForm.style.display = "block",
             registrationForm.style.display = "block",
-            sessionStorage.userID = ''
+            sessionStorage.userID = '',
+            localStorage.email = '',
+            localStorage.library = ''
         )
     })
 }

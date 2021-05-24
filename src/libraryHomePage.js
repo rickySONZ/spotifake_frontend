@@ -9,7 +9,7 @@ function appendLibraryAfterLogin(){
 
     let sessionID = sessionStorage.userID
 
-    fetch(`http://localhost:3000/users/${sessionID}/libraries/1/liked_songs`)
+    fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
     .then(res => console.log(res.json()))
   
 }
