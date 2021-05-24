@@ -16,7 +16,8 @@ function fetchLibraryAfterLogin(){
     .then(object => {
         console.log(object)
         for (const i in object){
-            s = new Song(object[i].song)
+            s = new LikedSong(object[i].song)
+            s.id = object[i].id
             s.addLikedSong()
         }
     })
