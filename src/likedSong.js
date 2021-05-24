@@ -10,13 +10,12 @@ class LikedSong {
     addLikedSong(){
         let newLi = document.createElement('li')
         console.log(this)
-        // newLi.id = `liked-song-${this.id}`
-        // newLi.setAttribute()
-        let deleteButton = document.createElement('button')
-        deleteButton.innerText = 'X'
-        deleteButton.setAttribute('data-action', 'delete')
-        newLi.appendChild(deleteButton)
-        newLi.innerText = `${this.name} - ${this.album} - ${this.artist}`
+        newLi.id = `liked-song-${this.id}`
+        // let deleteButton = document.createElement('button')
+        // deleteButton.value = 'X'
+        // deleteButton.setAttribute('data-action', 'delete')
+        
+        newLi.innerHTML = `${this.name} - ${this.album} - ${this.artist}  <button data-action='delete'>X</button>`
        const libraryList = document.getElementsByClassName('library-list')[0]
        libraryList.append(newLi)
     }
