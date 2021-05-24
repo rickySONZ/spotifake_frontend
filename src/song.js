@@ -7,14 +7,16 @@ class Song {
         this.uid = uid
     }
 
-    appendLibrarySong(song){
-        let likedSongDiv = document.createElement('div')
-        likedSongDiv.classList.add('liked-song-div')
-        let newSong = new Song(song)
-        let newSongInfo = document.createElement('title')
-        newSongInfo.innerText = `${newSong.name}`
-        let libraryDiv = document.querySelector('.library-div')
-        libraryDiv.append(likedSongDiv)
-        likedSongDiv.append(newSongInfo)
-    }   
+    renderlikedSong(){
+        return(`<li id="liked-song-${this.id}" data-id=${this.id}>
+                <span>${this.name} - ${this.artist} - ${this.album}</span> 
+                <button data-action='delete'>X</button>
+            </li>`
+        )
+    } 
+
+    appendLikedSong(){
+        const libraryList = document.getElementsByClassName('library-list')
+        libraryList.innerHTML += this.renderlikedSong()
+    }
 }

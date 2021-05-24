@@ -1,23 +1,35 @@
 function fetchLibraryAfterLogin(){
     let libraryDiv = document.createElement('div')
     libraryDiv.classList.add('library-div')
+    let libraryList = document.createElement('ul')
+    libraryList.classList.add('library-list')
     let libraryTitle = document.createElement('h2')
     libraryTitle.classList.add('title')
     libraryTitle.innerText = `${localStorage.email}'s library`
-    libraryDiv.append(libraryTitle)
+    libraryDiv.append(libraryTitle, libraryList)
     document.body.append(libraryDiv)
 
     let sessionID = sessionStorage.userID
 
     fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
-    .then(res => console.log(res.json()))
-//     .then(function(object){
-//         let obj = object
-//         for (const i in obj){
-            
-//             appendLibrarySong(i)
-//         }
-//     })
+    .then(res => res.json())
+    .then(object => {
+        console.log(object)
+        for (const i in object){
+            s = new Song(object[i].song)
+            console.log(s)
+        }
+        // for (const song in songs) {
+        //     let s = new Song(song)
+        //     s.name = song.name
+        //     s.artist = song.artist
+        //     s.album = song.album
+        //     s.uid = song.uid
+        //     s.url = song.url
+        //     s.appendLikedSong()
+        // }  
+    })
+
   
  }
 
