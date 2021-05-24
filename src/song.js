@@ -7,16 +7,11 @@ class Song {
         this.uid = uid
     }
 
-    renderlikedSong(){
-        return(`<li id="liked-song-${this.id}" data-id=${this.id}>
-                <span>${this.name} - ${this.artist} - ${this.album}</span> 
-                <button data-action='delete'>X</button>
-            </li>`
-        )
-    } 
-
-    appendLikedSong(){
-        const libraryList = document.getElementsByClassName('library-list')
-        libraryList.innerHTML += this.renderlikedSong()
+    addLikedSong(){
+        let newLi = document.createElement('li')
+        newLi.innerText = `${this.name} - ${this.album} - ${this.artist}`
+       const libraryList = document.getElementsByClassName('library-list')[0]
+       libraryList.append(newLi)
     }
+    
 }
