@@ -21,6 +21,7 @@ function fetchLibraryAfterLogin(){
             s.addLikedSong()
         }
     })
+    .then()
  }
 
 
