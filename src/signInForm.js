@@ -73,6 +73,7 @@ signInForm.addEventListener('submit', function(e) {
         formData[1].value = ""
         if (sessionStorage.userID != "undefined"){
             appendLogOutButton() 
+            appendSearchBar()
             fetchLibraryAfterLogin()
             alert(`You have successfully logged in as ${user.email}`)
             } 
@@ -98,6 +99,7 @@ function appendLogOutButton(){
     logoutButton.addEventListener("click", (e) => {
         let sessionID = sessionStorage.userID
         let libraryContainer = document.querySelector(".library-div")
+        let searchBarDiv = document.querySelector('.searchbar-div')
         fetch(`http://localhost:3000/sessions/${sessionID}`, {
         method: 'DELETE',
         headers:{
@@ -111,6 +113,7 @@ function appendLogOutButton(){
         .then(res => res.json())
         .then(data => console.log(data))
         .then(logoutButton.remove())
+        .then(searchBarDiv.remove())
         .then(libraryContainer.remove())
         .then(
             signInForm.style.display = "block",

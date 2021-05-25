@@ -24,34 +24,3 @@ function fetchLibraryAfterLogin(){
     .catch(err => console.error(err))
  } 
 }
-
-
-//  function fetchNewLibAfterRegistration(){
-//     let libraryDiv = document.createElement('div')
-//     libraryDiv.classList.add('library-div')
-//     let libraryList = document.createElement('ul')
-//     libraryList.classList.add('library-list')
-//     let libraryTitle = document.createElement('h2')
-//     libraryTitle.classList.add('title')
-//     libraryTitle.innerText = `${localStorage.email}'s library`
-//     libraryDiv.append(libraryTitle, libraryList)
-//     document.body.append(libraryDiv)
-//      fetch(`http://localhost:3000/users/${sessionID}/libraries`,{
-//          method: 'POST',
-//          headers: {
-//             "Content-Type": "application/json",
-//             "Accept": "application/json"
-//         },
-//         body: JSON.stringify({
-//             user_id: parseInt(localStorage.userID)
-//         })
-//      })
-//      .then(res => res.json())
-//      .then( data => console.log(data))
-//      .catch(err => console.error(err))
-
-//  }
-
-
-
-

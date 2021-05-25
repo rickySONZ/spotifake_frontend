@@ -14,6 +14,7 @@ class LikedSong {
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'X'
         deleteButton.setAttribute('data-action', 'delete')
+        deleteButton.classList.add('button')
         deleteButton.addEventListener("click", this.deleteLikedSong.bind(this))
         newLi.innerHTML = `${this.name} - ${this.album} - ${this.artist}`
         newLi.appendChild(deleteButton)
