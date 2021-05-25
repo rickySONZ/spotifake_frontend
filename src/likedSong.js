@@ -14,18 +14,20 @@ class LikedSong {
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'X'
         deleteButton.setAttribute('data-action', 'delete')
-        
+        deleteButton.addEventListener("click", this.deleteLikedSong.bind(this))
         newLi.innerHTML = `${this.name} - ${this.album} - ${this.artist}`
         newLi.appendChild(deleteButton)
        const libraryList = document.getElementsByClassName('library-list')[0]
        libraryList.append(newLi)
-       deleteButton.addEventListener("click", this.deleteLikedSong())
+       
     }
     
 
 
-    deleteLikedSong(obj){
+    deleteLikedSong(){
         let sessionID = sessionStorage.userID
+        debugger
+        
         fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}/liked_songs/${this.id}`, {
             method: 'DELETE'
         })
