@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchUsers();
-    // createSignInForm();
+    checkIfLoggedIn()
+    // loginCurrentUser();
 })
 
 
@@ -8,8 +9,26 @@ loginCurrentUser = (object) => {
     if (object.status == 200){
         signInForm.style.display = "none"
         registrationForm.style.display = "none"
+        // appendSearchBar()
+        // fetchLibraryAfterLogin() 
+        // appendLogOutButton()
     } else {
         signInForm.style.display = "block"
         registrationForm.style.display = "block"
     }
 }
+
+checkIfLoggedIn = () => {
+    if (sessionStorage.userID != "" && sessionStorage.userID != "undefined"){
+        signInForm.style.display = "none"
+        registrationForm.style.display = "none"
+        appendSearchBar()
+        appendLogOutButton()
+        fetchLibraryAfterLogin() 
+       
+    } else {
+        signInForm.style.display = "block"
+        registrationForm.style.display = "block"
+    }
+}
+

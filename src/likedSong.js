@@ -27,7 +27,7 @@ class LikedSong {
 
     deleteLikedSong(){
         let sessionID = sessionStorage.userID
-        debugger
+        
         
         fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}/liked_songs/${this.id}`, {
             method: 'DELETE'

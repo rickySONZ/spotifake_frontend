@@ -57,7 +57,8 @@ signInForm.addEventListener('submit', function(e) {
       },
         body: JSON.stringify({
           email: formData[0].value,
-          password: formData[1].value
+          password: formData[1].value,
+          session_id: sessionStorage.userID
         })
       })
       .then(res => res.json())
@@ -76,6 +77,8 @@ signInForm.addEventListener('submit', function(e) {
             appendSearchBar()
             fetchLibraryAfterLogin()
             alert(`You have successfully logged in as ${user.email}`)
+            signInForm.style.display = "none"
+        registrationForm.style.display = "none"
             } 
       })
       .catch(errors => console.log(errors))

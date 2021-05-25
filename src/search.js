@@ -15,4 +15,22 @@ function appendSearchBar(){
     document.body.append(searchBarDiv)
     searchBarDiv.append(searchBarForm)
     searchBarForm.append(searchBar, searchSubmit)
+    searchBarForm.addEventListener("submit", (e)=> {
+        e.preventDefault()
+        fetch("http://localhost:3000/songs/search", {
+            method: "POST",
+            headers:{
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+              body: JSON.stringify({
+                 search_song_title: searchBar.value
+              })
+        })
+        .then(res => res.json())
+        .then(function(object) {
+            console.log(object)
+          })
+    })
 }
+
