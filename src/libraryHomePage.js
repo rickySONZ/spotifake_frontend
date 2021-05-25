@@ -1,4 +1,7 @@
+let sessionID = sessionStorage.userID
+
 function fetchLibraryAfterLogin(){
+    if (localStorage.library != ""){
     let libraryDiv = document.createElement('div')
     libraryDiv.classList.add('library-div')
     let libraryList = document.createElement('ul')
@@ -8,9 +11,6 @@ function fetchLibraryAfterLogin(){
     libraryTitle.innerText = `${localStorage.email}'s library`
     libraryDiv.append(libraryTitle, libraryList)
     document.body.append(libraryDiv)
-
-    let sessionID = sessionStorage.userID
-
     fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
     .then(res => res.json())
     .then(object => {
@@ -21,7 +21,37 @@ function fetchLibraryAfterLogin(){
             s.addLikedSong()
         }
     })
-    .then()
- }
+    .catch(err => console.error(err))
+ } 
+}
+
+
+//  function fetchNewLibAfterRegistration(){
+//     let libraryDiv = document.createElement('div')
+//     libraryDiv.classList.add('library-div')
+//     let libraryList = document.createElement('ul')
+//     libraryList.classList.add('library-list')
+//     let libraryTitle = document.createElement('h2')
+//     libraryTitle.classList.add('title')
+//     libraryTitle.innerText = `${localStorage.email}'s library`
+//     libraryDiv.append(libraryTitle, libraryList)
+//     document.body.append(libraryDiv)
+//      fetch(`http://localhost:3000/users/${sessionID}/libraries`,{
+//          method: 'POST',
+//          headers: {
+//             "Content-Type": "application/json",
+//             "Accept": "application/json"
+//         },
+//         body: JSON.stringify({
+//             user_id: parseInt(localStorage.userID)
+//         })
+//      })
+//      .then(res => res.json())
+//      .then( data => console.log(data))
+//      .catch(err => console.error(err))
+
+//  }
+
+
 
 
