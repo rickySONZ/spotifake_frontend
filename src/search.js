@@ -67,12 +67,16 @@ function modalPopUpSearch(){
  closeButton.addEventListener("click", () => {
      let buttons = document.querySelectorAll('button.add-button')
      let checkedButtons = []
+     //pulling buttons where they have been checked to create new liked song
      for (const i in buttons){
         if (buttons[i].innerHTML === "✓"){
             checkedButtons.push(parseInt(buttons[i].parentElement.dataset.id))
     }
 }
+
+//Getting rid of modal window
 modalDiv.remove()
+//Making patch request to library, server is set up to return liked songs/ songs
 fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}`, {
     method: 'PATCH',
     headers:{
@@ -96,9 +100,7 @@ fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library
             s.addLikedSong()
     }
 })
-
-
- })
+})
 
 }
 

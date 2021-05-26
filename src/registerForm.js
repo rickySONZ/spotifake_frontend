@@ -65,7 +65,7 @@ registrationForm.addEventListener('submit', function(e) {
         console.log(obj)
         user = new User(obj)
         loginCurrentUser(obj)
-        localStorage.email = obj.email
+        localStorage.email = user.email
         localStorage.library = obj.library_id
         sessionStorage.userID = obj.id
         regData[0].value = "" 

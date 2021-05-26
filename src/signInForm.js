@@ -64,9 +64,8 @@ signInForm.addEventListener('submit', function(e) {
       .then(res => res.json())
       .then(function(object) {
         let obj = object
-        console.log(obj)
         const user = new User(obj)
-        loginCurrentUser(obj)
+        loginCurrentUser(user)
         sessionStorage.userID = obj.id
         localStorage.email = obj.email
         localStorage.library = obj.library
@@ -83,15 +82,6 @@ signInForm.addEventListener('submit', function(e) {
       })
       .catch(errors => console.log(errors))
   })
-
-
-function fetchUsers(){
-    fetch("http://localhost:3000/users")
-    .then(r => r.json())
-    .then(data => console.log(data))
-    .catch(err => console.warn(err))
-}
-
 
 //Declaration of logout button function, creates a loop with sign in forms
 function appendLogOutButton(){
