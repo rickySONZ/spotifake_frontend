@@ -17,6 +17,7 @@ function appendSearchBar(){
     searchBarForm.append(searchBar, searchSubmit)
     searchBarForm.addEventListener("submit", (e)=> {
         e.preventDefault()
+        modalPopUpSearch()
         fetch("http://localhost:3000/songs/search", {
             method: "POST",
             headers:{
@@ -28,10 +29,14 @@ function appendSearchBar(){
               })
         })
         .then(res => res.json())
-        .then(function(object) {
-            console.log(object),
-            modalPopUpSearch()
-          })
+        .then(object => {
+            console.log(object)
+            for (const i in object){
+                debugger
+                s = new Song(object[i])
+                s.addSearchedSong()
+            }
+        })
     })
 }
 
@@ -47,7 +52,6 @@ function modalPopUpSearch(){
    <div class="modal-background"></div>
    <div class="modal-content">
    <ul class="search-list">
-   <li>Hi This is a test</li>
    </ul>
    </div>
    <button class="modal-close is-large" aria-label="close"></button>
