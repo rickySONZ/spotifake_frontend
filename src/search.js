@@ -51,6 +51,8 @@ function modalPopUpSearch(){
     let closeButton = document.createElement('button')
     closeButton.classList.add('modal-close', 'is-large')
     closeButton.setAttribute('aria-label', 'close')
+    let sessionID = sessionStorage.userID
+
    modalDiv.innerHTML = `
    <div class="modal-background"></div>
    <div class="modal-content">
@@ -87,10 +89,10 @@ fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library
     let obj = object
     let libraryList = document.querySelector('.library-list')
     libraryList.innerHTML = ""
-    let songs = obj.songs
-    for (const i in songs){
-        s = new LikedSong(songs[i])
-            s.id = songs[i].id
+    console.log(obj)
+    for (const i in obj){
+        s = new LikedSong(obj[i].song)
+            s.id = obj[i].id        
             s.addLikedSong()
     }
 })
