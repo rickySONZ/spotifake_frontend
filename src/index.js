@@ -22,8 +22,8 @@ checkIfLoggedIn = () => {
     if (sessionStorage.userID != "" && sessionStorage.userID != "undefined"){
         signInForm.style.display = "none"
         registrationForm.style.display = "none"
-        appendSearchBar()
         appendLogOutButton()
+        appendSearchBar()
         fetchLibraryAfterLogin() 
        
     } else {

@@ -14,6 +14,9 @@ class Song {
         newLi.innerText = `${this.name} - ${this.album} - ${this.artist}`
         const modalList = document.querySelector('.search-list')
         modalList.append(newLi)
-        
+        let addButton = document.createElement('button')
+        addButton.classList.add('button', 'add-button')
+        addButton.innerText = '&check;'
+        newLi.append(addButton)
     }
 }

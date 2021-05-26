@@ -15,8 +15,10 @@ function appendSearchBar(){
     document.body.append(searchBarDiv)
     searchBarDiv.append(searchBarForm)
     searchBarForm.append(searchBar, searchSubmit)
+    
     searchBarForm.addEventListener("submit", (e)=> {
         e.preventDefault()
+        if (searchBar.value != "" && searchBar.value != "undefined") {
         modalPopUpSearch()
         fetch("http://localhost:3000/songs/search", {
             method: "POST",
@@ -37,6 +39,7 @@ function appendSearchBar(){
                 s.addSearchedSong()
             }
         })
+        }
     })
 }
 
@@ -51,6 +54,7 @@ function modalPopUpSearch(){
    modalDiv.innerHTML = `
    <div class="modal-background"></div>
    <div class="modal-content">
+   <h1 class = "title" >Search results from Spotify</h1>
    <ul class="search-list">
    </ul>
    </div>
