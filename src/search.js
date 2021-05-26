@@ -63,8 +63,15 @@ function modalPopUpSearch(){
  modalDiv.append(closeButton)
 
  closeButton.addEventListener("click", () => {
-     modalDiv.remove()
-     let cheeckedButton
+     let buttons = document.querySelectorAll('button.add-button')
+     let checkedButtons = []
+     for (const i in buttons){
+        if (buttons[i].innerHTML === "✓"){
+            checkedButtons.push(parseInt(buttons[i].parentElement.dataset.id))
+    }
+}
+modalDiv.remove()
+
  })
 
 }

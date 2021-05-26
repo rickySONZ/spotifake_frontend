@@ -20,7 +20,7 @@ class Song {
         let addButton = document.createElement('button')
         addButton.classList.add('button', 'add-button')
         addButton.innerHTML = '-'
-        newLi.append(addButton)
+        newLi.appendChild(addButton)
         addButton.addEventListener("click", () => {
            if (addButton.innerHTML === "-"){
                addButton.innerHTML = "&check;"
