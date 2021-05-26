@@ -34,7 +34,7 @@ function appendSearchBar(){
         .then(object => {
             console.log(object)
             for (const i in object){
-                debugger
+                
                 s = new Song(object[i])
                 s.addSearchedSong()
             }
@@ -64,6 +64,7 @@ function modalPopUpSearch(){
 
  closeButton.addEventListener("click", () => {
      modalDiv.remove()
+     let cheeckedButton
  })
 
 }
