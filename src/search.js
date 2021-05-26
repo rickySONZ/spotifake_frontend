@@ -29,8 +29,34 @@ function appendSearchBar(){
         })
         .then(res => res.json())
         .then(function(object) {
-            console.log(object)
+            console.log(object),
+            modalPopUpSearch()
           })
     })
+}
+
+//Function for adding a modal window with song search results where the user can click and add a song to their lib
+function modalPopUpSearch(){
+    let modalDiv = document.createElement('div')
+    modalDiv.classList.add('modal', 'is-active')
+    document.body.append(modalDiv)
+    let closeButton = document.createElement('button')
+    closeButton.classList.add('modal-close', 'is-large')
+    closeButton.setAttribute('aria-label', 'close')
+   modalDiv.innerHTML = `
+   <div class="modal-background"></div>
+   <div class="modal-content">
+   <ul class="search-list">
+   <li>Hi This is a test</li>
+   </ul>
+   </div>
+   <button class="modal-close is-large" aria-label="close"></button>
+ `
+ modalDiv.append(closeButton)
+
+ closeButton.addEventListener("click", () => {
+     modalDiv.remove()
+ })
+
 }
 

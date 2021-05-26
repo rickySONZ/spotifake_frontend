@@ -19,6 +19,11 @@
     margin-top: 3px;
     margin-bottom: 3px;
 }
+
+.searchbar-div {
+    text-align: center;
+}
+
 .library-div {
     height: 750px;
     width: 750px;
