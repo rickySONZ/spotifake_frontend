@@ -1,5 +1,6 @@
 let sessionID = sessionStorage.userID
 
+
 function fetchLibraryAfterLogin(){
     if (localStorage.library != ""){
     let libraryDiv = document.createElement('div')

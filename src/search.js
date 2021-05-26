@@ -71,6 +71,30 @@ function modalPopUpSearch(){
     }
 }
 modalDiv.remove()
+fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}`, {
+    method: 'PATCH',
+    headers:{
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+         song_ids: checkedButtons,
+         library: localStorage.library
+      })
+})
+.then(res => res.json())
+.then(object =>{
+    let obj = object
+    let libraryList = document.querySelector('.library-list')
+    libraryList.innerHTML = ""
+    let songs = obj.songs
+    for (const i in songs){
+        s = new LikedSong(songs[i])
+            s.id = songs[i].id
+            s.addLikedSong()
+    }
+})
+
 
  })
 
