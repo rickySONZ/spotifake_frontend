@@ -10,7 +10,7 @@ let signInBreak = document.createElement("br")
 
 let spotifakeTitle = document.createElement('h1')
     spotifakeTitle.classList.add('title', 'login')
-    spotifakeTitle.innerText = "SpotiFake"
+    spotifakeTitle.innerHTML = `<img src ="stylesheets/images/spotifake_in_circles.jpg" width=40 hieght = 40></img>SpotiFake`
 
     let spotifakeMainTitle = document.createElement('h1')
     spotifakeMainTitle.classList.add('title', 'main')
@@ -122,13 +122,10 @@ function appendLogOutButton(){
         })
         .then(res => res.json())
         .then(data => console.log(data))
-        .then(spotifakeImage.remove())
-        // .then(spotifakeMainTitle.remove())
         .then(logoutButton.remove())
         .then(searchBarDiv.remove())
         .then(libraryContainer.remove())
         .then(
-            // document.body.append(spotifakeTitle),
             signInForm.style.display = "block",
             registrationForm.style.display = "block",
             sessionStorage.userID = '',

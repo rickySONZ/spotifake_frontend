@@ -16,13 +16,11 @@ class LikedSong {
         deleteButton.setAttribute('data-action', 'delete')
         deleteButton.classList.add('button')
         deleteButton.addEventListener("click", this.deleteLikedSong.bind(this))
-        let playButton = document.createElement('button')
+        let playButton = document.createElement('a')
         playButton.innerText = "►"
         playButton.classList.add('button')
         playButton.setAttribute("href", this.url)
-        playButton.addEventListener("click", () => {
-            window.location = `${this.url}`
-        })
+        playButton.setAttribute('target', "_blank")
         newLi.innerHTML = `${this.name} - ${this.album} - ${this.artist}`
         newLi.append(playButton, deleteButton)
        const libraryList = document.getElementsByClassName('library-list')[0]
