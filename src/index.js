@@ -18,7 +18,7 @@ loginCurrentUser = (object) => {
 }
 
 checkIfLoggedIn = () => {
-    if (sessionStorage.userID != "" && sessionStorage.userID != "undefined"){
+    if (sessionStorage.userID && sessionStorage.userID != "undefined"){
         signInForm.style.display = "none"
         registrationForm.style.display = "none"
         appendLogOutButton()
@@ -34,6 +34,7 @@ checkIfLoggedIn = () => {
 createLikedSongsFromArray = (object) => {
     for (const i in object){
         s = new LikedSong(object[i].song)
+        console.log(s)
         s.id = object[i].id
         s.addLikedSong()
     }
