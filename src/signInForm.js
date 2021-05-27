@@ -10,7 +10,7 @@ let signInBreak = document.createElement("br")
 
 let spotifakeTitle = document.createElement('h1')
     spotifakeTitle.classList.add('title', 'login')
-    spotifakeTitle.innerText = "Spotifake"
+    spotifakeTitle.innerText = "SpotiFake"
 
     let spotifakeMainTitle = document.createElement('h1')
     spotifakeMainTitle.classList.add('title', 'main')

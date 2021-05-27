@@ -36,6 +36,9 @@
     border-width: 1px;
     border-radius: 25px;
 }
+.library-list{
+    padding-left: 5%;
+}
 
 button.button {
     background-color: #1DB954;
