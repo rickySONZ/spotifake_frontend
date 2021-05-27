@@ -17,10 +17,17 @@ class Song {
         newLi.innerText = `${this.name} - ${this.album} - ${this.artist}`
         const modalList = document.querySelector('.search-list')
         modalList.append(newLi)
+        let playerButton = document.createElement('button')
+        playerButton.innerText = "►"
+        playerButton.classList.add('button')
+        playerButton.setAttribute("href", this.url)
+        playerButton.addEventListener("click", () => {
+            window.location = `${this.url}`
+        })
         let addButton = document.createElement('button')
         addButton.classList.add('button', 'add-button')
         addButton.innerHTML = '-'
-        newLi.appendChild(addButton)
+        newLi.append(playerButton, addButton)
         addButton.addEventListener("click", () => {
            if (addButton.innerHTML === "-"){
                addButton.innerHTML = "&check;"
