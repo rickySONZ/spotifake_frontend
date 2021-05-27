@@ -65,8 +65,9 @@ registrationForm.addEventListener('submit', function(e) {
        
       })
       .then(res => res.json())
-      .then(function(object) {    
+      .then(function(object) {  
         let obj = object
+          if (obj.status == 200){  
         console.log(obj)
         user = new User(obj)
         loginCurrentUser(obj)
@@ -81,7 +82,13 @@ registrationForm.addEventListener('submit', function(e) {
             appendSearchBar()
         fetchLibraryAfterLogin()
         alert(`You have successfully created an account with the email ${user.email}.`)
-        }    
+        }  } else if (obj.password && obj.email){
+            alert(`Password ${obj.password[0]} and Email ${obj.email[0]}`)
+        }  else if (obj.password){
+            alert(`Password ${obj.password[0]}`)
+        } else if (obj.email){
+            alert(`Email ${obj.email[0]}`)
+        }
       })
       .catch(errors => console.log(errors))
     
