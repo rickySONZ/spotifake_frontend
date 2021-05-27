@@ -17,11 +17,7 @@ function fetchLibraryAfterLogin(){
     .then(res => res.json())
     .then(object => {
         console.log(object)
-        for (const i in object){
-            s = new LikedSong(object[i].song)
-            s.id = object[i].id
-            s.addLikedSong()
-        }
+        createLikedSongsFromArray(object)
     })
     .catch(err => console.error(err))
  } 

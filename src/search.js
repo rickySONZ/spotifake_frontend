@@ -12,6 +12,7 @@ function appendSearchBar(){
     searchSubmit.type = "submit"
     searchSubmit.innerText = "Search Spotify For Song Title"
     searchSubmit.classList.add('button')
+
     document.body.append(spotifakeImage, searchBarDiv)
     searchBarDiv.append(searchBarForm)
     searchBarForm.append(searchBar, searchSubmit)
@@ -94,11 +95,7 @@ fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library
     let libraryList = document.querySelector('.library-list')
     libraryList.innerHTML = ""
     console.log(obj)
-    for (const i in obj){
-        s = new LikedSong(obj[i].song)
-            s.id = obj[i].id        
-            s.addLikedSong()
-    }
+    createLikedSongsFromArray(object)
 })
 })
 

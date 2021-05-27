@@ -31,3 +31,10 @@ checkIfLoggedIn = () => {
     }
 }
 
+createLikedSongsFromArray = (object) => {
+    for (const i in object){
+        s = new LikedSong(object[i].song)
+        s.id = object[i].id
+        s.addLikedSong()
+    }
+}
