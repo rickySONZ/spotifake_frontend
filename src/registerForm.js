@@ -14,6 +14,11 @@ emailRegistrationInput.type = "text"
 emailRegistrationInput.classList.add("registration-input", "input")
 emailRegistrationInput.placeholder = "Email"
 
+let spotifakeLogo = document.createElement("img")
+spotifakeLogo.src = "stylesheets/images/spotifake_in_circles.jpg"
+spotifakeLogo.width = 100
+spotifakeLogo.height = 100
+
 //Defining password input
 let passwordRegistrationInput = document.createElement("input")
 passwordRegistrationInput.type = "text"
@@ -34,7 +39,7 @@ submitRegistrationButton.innerText = "Register Here"
 
 
 //adding forms and inputs to document
-registrationForm.append(registrationTitle, registrationbreak, emailRegistrationInput, registrationbre, passwordRegistrationInput, registrationbrea, passwordConfirmationRegistrationInput, registrationbr, submitRegistrationButton)
+registrationForm.append(spotifakeLogo, registrationTitle, registrationbreak, emailRegistrationInput, registrationbre, passwordRegistrationInput, registrationbrea, passwordConfirmationRegistrationInput, registrationbr, submitRegistrationButton)
 
 document.body.append(registrationForm)
 

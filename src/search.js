@@ -3,7 +3,7 @@
 function appendSearchBar(){
     let searchBar = document.createElement('input')
     searchBar.type = 'text'
-    searchBar.classList.add('searchbar-input')
+    searchBar.classList.add('searchbar-input', 'input', 'is-rounded')
     let searchBarForm = document.createElement('form')
     searchBarForm.classList.add('searchbar-form')
     let searchBarDiv = document.createElement('div')

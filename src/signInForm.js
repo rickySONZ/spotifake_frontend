@@ -9,10 +9,10 @@ signInTitle.innerText = "Sign In Here"
 let signInBreak = document.createElement("br")
 
 // Adding logo to sign out form
-let spotifakeLogo = document.createElement("img")
-spotifakeLogo.src = "/Users/ryanerricson/Development/code/phase-4/spotifake/spotifake_frontend/stylesheets/images/spotifake_in_circles.jpg"
-spotifakeLogo.width = 100
-spotifakeLogo.height = 100
+let spotifakeLogo2 = document.createElement("img")
+spotifakeLogo2.src = "stylesheets/images/spotifake_in_circles.jpg"
+spotifakeLogo2.width = 100
+spotifakeLogo2.height = 100
 
 let tempUserDisplayDiv = document.createElement("div")
 
@@ -36,10 +36,9 @@ submitSignInButton.classList.add("button")
 
 
 //adding forms and inputs to document
-signInForm.append(signInTitle, signInBreak, emailSignInInput, signInbre, passwordSignInInput, signInbr, submitSignInButton)
+signInForm.append(spotifakeLogo2, signInTitle, signInBreak, emailSignInInput, signInbre, passwordSignInInput, signInbr, submitSignInButton)
 
 document.body.append(signInForm)
-document.body.append(spotifakeLogo)
 
 let formData = document.querySelectorAll(".sign-in-input")
 

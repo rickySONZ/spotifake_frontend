@@ -3,7 +3,7 @@
 function fetchLibraryAfterLogin(){
     if (localStorage.library != ""){
     let libraryDiv = document.createElement('div')
-    libraryDiv.classList.add('library-div')
+    libraryDiv.classList.add('library-div', 'container')
     let libraryList = document.createElement('ul')
     libraryList.classList.add('library-list')
     let libraryTitle = document.createElement('h2')
