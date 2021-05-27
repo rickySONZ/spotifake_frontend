@@ -53,9 +53,12 @@ h2.title {
     margin-top: 1px;
 }
 
-body {
-   
+h1.title{
+    text-align: center;
+    padding-top: 3%;
 }
+
+h1.title.login {}
 
 .modal-content {
     background-color: white;

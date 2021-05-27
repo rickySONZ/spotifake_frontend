@@ -41,7 +41,7 @@ submitRegistrationButton.innerText = "Register Here"
 //adding forms and inputs to document
 registrationForm.append(spotifakeLogo, registrationTitle, registrationbreak, emailRegistrationInput, registrationbre, passwordRegistrationInput, registrationbrea, passwordConfirmationRegistrationInput, registrationbr, submitRegistrationButton)
 
-document.body.append(registrationForm)
+document.body.append(registrationForm, spotifakeTitle)
 
 let regData = document.querySelectorAll('.registration-input')
 

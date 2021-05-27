@@ -8,6 +8,14 @@ let signInTitle = document.createElement("h3")
 signInTitle.innerText = "Sign In Here"
 let signInBreak = document.createElement("br")
 
+let spotifakeTitle = document.createElement('h1')
+    spotifakeTitle.classList.add('title', 'login')
+    spotifakeTitle.innerText = "Spotifake"
+
+    let spotifakeMainTitle = document.createElement('h1')
+    spotifakeMainTitle.classList.add('title', 'main')
+    spotifakeMainTitle.innerText = "Spotifake"
+
 // Adding logo to sign out form
 let spotifakeLogo2 = document.createElement("img")
 spotifakeLogo2.src = "stylesheets/images/spotifake_in_circles.jpg"
@@ -69,7 +77,6 @@ signInForm.addEventListener('submit', function(e) {
       .then(function(object) {
         let obj = object
         if (obj.status == 200){
-        debugger
         const user = new User(obj)
         loginCurrentUser(user)
         sessionStorage.userID = obj.id
@@ -84,6 +91,7 @@ signInForm.addEventListener('submit', function(e) {
             alert(`You have successfully logged in as ${user.email}`)
             signInForm.style.display = "none"
         registrationForm.style.display = "none"
+        // spotifakeTitle.remove()
             } 
       } else if (obj.status == 500 || obj.status == 404){
         alert(obj.error)
@@ -115,10 +123,12 @@ function appendLogOutButton(){
         .then(res => res.json())
         .then(data => console.log(data))
         .then(spotifakeImage.remove())
+        // .then(spotifakeMainTitle.remove())
         .then(logoutButton.remove())
         .then(searchBarDiv.remove())
         .then(libraryContainer.remove())
         .then(
+            // document.body.append(spotifakeTitle),
             signInForm.style.display = "block",
             registrationForm.style.display = "block",
             sessionStorage.userID = '',

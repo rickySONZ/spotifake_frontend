@@ -65,6 +65,7 @@ function modalPopUpSearch(){
  `
  modalDiv.append(closeButton)
 
+ //Event Listener for liking songs from search
  closeButton.addEventListener("click", () => {
      let buttons = document.querySelectorAll('button.add-button')
      let checkedButtons = []
