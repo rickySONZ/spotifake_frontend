@@ -12,7 +12,7 @@ function appendSearchBar(){
     searchSubmit.type = "submit"
     searchSubmit.innerText = "Search Spotify For Song Title"
     searchSubmit.classList.add('button')
-    document.body.append(searchBarDiv)
+    document.body.append(spotifakeImage, searchBarDiv)
     searchBarDiv.append(searchBarForm)
     searchBarForm.append(searchBar, searchSubmit)
     

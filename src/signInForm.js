@@ -14,6 +14,11 @@ spotifakeLogo2.src = "stylesheets/images/spotifake_in_circles.jpg"
 spotifakeLogo2.width = 100
 spotifakeLogo2.height = 100
 
+let spotifakeImage = document.createElement('img')
+    spotifakeImage.src = 'stylesheets/images/spotifake_in_circles.jpg'
+    spotifakeImage.height = 100
+    spotifakeImage.width = 100
+
 let tempUserDisplayDiv = document.createElement("div")
 
 //Defining email input
@@ -63,6 +68,8 @@ signInForm.addEventListener('submit', function(e) {
       .then(res => res.json())
       .then(function(object) {
         let obj = object
+        if (obj.status == 200){
+        debugger
         const user = new User(obj)
         loginCurrentUser(user)
         sessionStorage.userID = obj.id
@@ -78,7 +85,10 @@ signInForm.addEventListener('submit', function(e) {
             signInForm.style.display = "none"
         registrationForm.style.display = "none"
             } 
-      })
+      } else if (obj.status == 500 || obj.status == 404){
+        alert(obj.error)
+      }
+    })
       .catch(errors => console.log(errors))
   })
 
@@ -104,6 +114,7 @@ function appendLogOutButton(){
         })
         .then(res => res.json())
         .then(data => console.log(data))
+        .then(spotifakeImage.remove())
         .then(logoutButton.remove())
         .then(searchBarDiv.remove())
         .then(libraryContainer.remove())
