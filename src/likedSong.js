@@ -1,4 +1,7 @@
 class LikedSong {
+
+    static all = []
+
     constructor({name, artist, album, url, uid}){
         this.name = name
         this.artist = artist
@@ -7,6 +10,31 @@ class LikedSong {
         this.uid = uid
     }
 
+    static sortAll(){
+        
+        this.all.sort(function (a, b){
+           var nameA = a.name.toUpperCase()
+           var nameB = b.name.toUpperCase()
+           if (nameA < nameB){
+               return -1
+           }
+           if (nameA > nameB){
+               return 1;
+           }
+           return 0;
+       })
+
+       let libraryL = document.querySelector('.library-list')
+        if (libraryL){
+        libraryL.innerHTML = ""}
+       
+        for (const i in this.all){
+            this.all[i].addLikedSong()
+        }
+       
+    }
+
+    
     addLikedSong(){
         let newLi = document.createElement('li')
         console.log(this)
@@ -25,10 +53,8 @@ class LikedSong {
         newLi.append(playButton, deleteButton)
        const libraryList = document.getElementsByClassName('library-list')[0]
        libraryList.append(newLi)
-       
-    }
-    
 
+    }
 
     deleteLikedSong(){
         let sessionID = sessionStorage.userID

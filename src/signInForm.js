@@ -87,6 +87,7 @@ signInForm.addEventListener('submit', function(e) {
         if (sessionStorage.userID != "undefined"){
             appendLogOutButton() 
             appendSearchBar()
+            appendSortButton()
             fetchLibraryAfterLogin()
             alert(`You have successfully logged in as ${user.email}`)
             signInForm.style.display = "none"
@@ -99,7 +100,6 @@ signInForm.addEventListener('submit', function(e) {
     })
       .catch(errors => console.log(errors))
   })
-
 //Declaration of logout button function, creates a loop with sign in forms
 function appendLogOutButton(){
     logoutButton = document.createElement('button')
@@ -110,6 +110,7 @@ function appendLogOutButton(){
         let sessionID = sessionStorage.userID
         let libraryContainer = document.querySelector(".library-div")
         let searchBarDiv = document.querySelector('.searchbar-div')
+        let sortB = document.getElementById('sort-button')
         fetch(`http://localhost:3000/sessions/${sessionID}`, {
         method: 'DELETE',
         headers:{
@@ -124,7 +125,9 @@ function appendLogOutButton(){
         .then(data => console.log(data))
         .then(logoutButton.remove())
         .then(searchBarDiv.remove())
+  
         .then(libraryContainer.remove())
+        .then(sortB.remove())
         .then(
             signInForm.style.display = "block",
             registrationForm.style.display = "block",

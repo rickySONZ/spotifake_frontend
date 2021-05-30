@@ -1,5 +1,4 @@
 
-
 function fetchLibraryAfterLogin(){
     if (localStorage.library != ""){
         let libraryDiv = document.createElement('div')
@@ -7,6 +6,8 @@ function fetchLibraryAfterLogin(){
         let libraryList = document.createElement('ul')
         libraryList.classList.add('library-list')
         let libraryTitle = document.createElement('h2')
+
+
         libraryTitle.classList.add('title')
         libraryTitle.innerText = `${localStorage.email}'s library`
         libraryDiv.append(libraryTitle, libraryList)
@@ -18,7 +19,9 @@ function fetchLibraryAfterLogin(){
     .then(object => {
         console.log(object)
         createLikedSongsFromArray(object)
+        
     })
+  
     .catch(err => console.error(err))
- } 
+    }
 }
