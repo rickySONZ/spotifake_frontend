@@ -1,6 +1,6 @@
 # SpotiFake Front End
 
-* Ruby version 2.6.1
+* Written Primarily in JavaScript. 
 
 * Back End is in this Repository https://github.com/rickySONZ/spotifake_api
 
