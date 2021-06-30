@@ -14,7 +14,7 @@ function fetchLibraryAfterLogin(){
         let sessionID = sessionStorage.userID
 
     document.body.append(libraryDiv)
-    fetch(`http://localhost:3000/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
+    fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
     .then(res => res.json())
     .then(object => {
         console.log(object)
