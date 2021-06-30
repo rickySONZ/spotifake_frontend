@@ -61,7 +61,7 @@ signInForm.addEventListener('submit', function(e) {
     e.preventDefault()
     console.log('here')
   
-    fetch('https://spotifake-api.herokuapp.com/sessions', {
+    fetch('http://spotifake-api.herokuapp.com/sessions', {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ function appendLogOutButton(){
         let libraryContainer = document.querySelector(".library-div")
         let searchBarDiv = document.querySelector('.searchbar-div')
         let sortB = document.getElementById('sort-button')
-        fetch(`https://spotifake-api.herokuapp.com/sessions/${sessionID}`, {
+        fetch(`http://spotifake-api.herokuapp.com/sessions/${sessionID}`, {
         method: 'DELETE',
         headers:{
             'Content-Type': 'application/json',

@@ -79,7 +79,7 @@ function modalPopUpSearch(){
 //Getting rid of modal window
 modalDiv.remove()
 //Making patch request to library, server is set up to return liked songs/ songs
-fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}`, {
+fetch(`http://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}`, {
     method: 'PATCH',
     headers:{
         'Content-Type': 'application/json',

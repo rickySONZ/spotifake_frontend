@@ -51,7 +51,7 @@ registrationForm.addEventListener('submit', function(e) {
     e.preventDefault()
     console.log('here')
   
-    fetch('https://spotifake-api.herokuapp.com/users', {
+    fetch('http://spotifake-api.herokuapp.com/users', {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
