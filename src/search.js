@@ -21,7 +21,7 @@ function appendSearchBar(){
         e.preventDefault()
         if (searchBar.value != "" && searchBar.value != "undefined") {
         modalPopUpSearch()
-        fetch("http://localhost:3000/songs/search", {
+        fetch("https://localhost:3000/songs/search", {
             method: "POST",
             headers:{
                 'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function modalPopUpSearch(){
 //Getting rid of modal window
 modalDiv.remove()
 //Making patch request to library, server is set up to return liked songs/ songs
-fetch(`http://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}`, {
+fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}`, {
     method: 'PATCH',
     headers:{
         'Content-Type': 'application/json',

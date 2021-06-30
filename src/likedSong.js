@@ -59,7 +59,7 @@ class LikedSong {
     deleteLikedSong(){
         let sessionID = sessionStorage.userID
 
-        fetch(`http://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}/liked_songs/${this.id}`, {
+        fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}/liked_songs/${this.id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
