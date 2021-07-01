@@ -3,7 +3,7 @@
 function appendSearchBar(){
     let searchBar = document.createElement('input')
     searchBar.type = 'text'
-    searchBar.placeholder = "Please Capitalize Your Search If Possible"
+    searchBar.placeholder = "Please Search Song Here/ Check Them to Add to Library"
     searchBar.classList.add('searchbar-input', 'input', 'is-rounded')
     let searchBarForm = document.createElement('form')
     searchBarForm.classList.add('searchbar-form')
