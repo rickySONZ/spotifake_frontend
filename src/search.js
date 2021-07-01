@@ -3,6 +3,7 @@
 function appendSearchBar(){
     let searchBar = document.createElement('input')
     searchBar.type = 'text'
+    searchBar.placeholder = "Please Capitalize Your Search If Possible"
     searchBar.classList.add('searchbar-input', 'input', 'is-rounded')
     let searchBarForm = document.createElement('form')
     searchBarForm.classList.add('searchbar-form')
@@ -19,6 +20,13 @@ function appendSearchBar(){
     
     searchBarForm.addEventListener("submit", (e)=> {
         e.preventDefault()
+        let searched = searchbar.value.split(" ")
+        let capitalizedSearchArray = () => {
+            for (const i in searched){
+                searched[0].toUpperCase() + searched[i].substr(1)
+            }
+        }
+        let capitalizedSearched = capitalizedSearchArray.join(" ")
         if (searchBar.value != "" && searchBar.value != "undefined") {
         modalPopUpSearch()
         fetch("https://spotifake-api.herokuapp.com/songs/search", {
