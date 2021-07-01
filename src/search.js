@@ -36,7 +36,7 @@ function appendSearchBar(){
                 Accept: 'application/json',
               },
               body: JSON.stringify({
-                 search_song_title: searchBar.value
+                 search_song_title: capitalizedSearched
               })
         })
         .then(res => res.json())
