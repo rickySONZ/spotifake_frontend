@@ -21,7 +21,7 @@ function appendSearchBar(){
         e.preventDefault()
         if (searchBar.value != "" && searchBar.value != "undefined") {
         modalPopUpSearch()
-        fetch("https://localhost:3000/songs/search", {
+        fetch("https://spotifake-api.herokuapp.com/songs/search", {
             method: "POST",
             headers:{
                 'Content-Type': 'application/json',
