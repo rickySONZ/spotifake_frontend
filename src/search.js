@@ -20,13 +20,12 @@ function appendSearchBar(){
     
     searchBarForm.addEventListener("submit", (e)=> {
         e.preventDefault()
-        let searched = searchbar.value.split(" ")
-        let capitalizedSearchArray = () => {
-            for (const i in searched){
-                searched[0].toUpperCase() + searched[i].substr(1)
-            }
+        let searched = searchBar.value.split(" ")
+        for (const i in searched){
+            searched[i] = searched[i].charAt(0).toUpperCase() + searched[i].substr(1)
         }
-        let capitalizedSearched = capitalizedSearchArray.join(" ")
+        let capitalizedSearched = searched.join(" ")
+        debugger
         if (searchBar.value != "" && searchBar.value != "undefined") {
         modalPopUpSearch()
         fetch("https://spotifake-api.herokuapp.com/songs/search", {
