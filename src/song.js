@@ -1,6 +1,6 @@
 class Song {
 
-    constructor({name, artist, album, url, uid, id}){
+    constructor({ name, artist, album, url, uid, id }) {
         this.name = name
         this.artist = artist
         this.album = album
@@ -10,7 +10,7 @@ class Song {
         this.addSearchedSong = this.addSearchedSong.bind(this)
     }
 
-    addSearchedSong(){
+    addSearchedSong() {
         let newLi = document.createElement('li')
         newLi.id = `search-song-${this.id}`
         newLi.setAttribute('data-id', `${this.id}`)
@@ -27,11 +27,11 @@ class Song {
         addButton.innerHTML = '-'
         newLi.append(playerButton, addButton)
         addButton.addEventListener("click", () => {
-           if (addButton.innerHTML === "-"){
-               addButton.innerHTML = "&check;"
-           } else {
-               addButton.innerHTML = "-"
-           }
+            if (addButton.innerHTML === "-") {
+                addButton.innerHTML = "&check;"
+            } else {
+                addButton.innerHTML = "-"
+            }
         })
     }
 }

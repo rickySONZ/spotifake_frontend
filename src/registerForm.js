@@ -46,50 +46,51 @@ document.body.append(registrationForm, spotifakeTitle)
 let regData = document.querySelectorAll('.registration-input')
 
 //Event listener for registration, appends a logout button and sets session
-registrationForm.addEventListener('submit', function(e) {
-    
-    e.preventDefault()
-    console.log('here')
-  
-    fetch('https://spotifake-api.herokuapp.com/users', {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-        body: JSON.stringify({
-          email: regData[0].value,
-          password: regData[1].value,
-          password_confirmation: regData[2].value,        
-        })
-       
-      })
-      .then(res => res.json())
-      .then(function(object) {  
-        let obj = object
-          if (obj.status == 200){  
+registrationForm.addEventListener('submit', function (e) {
+
+  e.preventDefault()
+  console.log('here')
+
+  fetch('https://spotifake-api.herokuapp.com/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      email: regData[0].value,
+      password: regData[1].value,
+      password_confirmation: regData[2].value,
+    })
+
+  })
+    .then(res => res.json())
+    .then(function (object) {
+      let obj = object
+      if (obj.status == 200) {
         console.log(obj)
         user = new User(obj)
         loginCurrentUser(obj)
         localStorage.email = user.email
         localStorage.library = obj.library_id
         sessionStorage.userID = obj.id
-        regData[0].value = "" 
+        regData[0].value = ""
         regData[1].value = ""
-        regData[2].value = "" 
-        if (sessionStorage.userID != "undefined"){
-            appendLogOutButton() 
-            appendSearchBar()
-        fetchLibraryAfterLogin()
-        alert(`You have successfully created an account with the email ${user.email}.`)
-        }  } else if (obj.password && obj.email){
-            alert(`Password ${obj.password[0]} and Email ${obj.email[0]}`)
-        }  else if (obj.password){
-            alert(`Password ${obj.password[0]}`)
-        } else if (obj.email){
-            alert(`Email ${obj.email[0]}`)
+        regData[2].value = ""
+        if (sessionStorage.userID != "undefined") {
+          appendLogOutButton()
+          appendSearchBar()
+          fetchLibraryAfterLogin()
+          alert(`You have successfully created an account with the email ${user.email}.`)
         }
-      })
-      .catch(errors => console.log(errors))
-    
-  })
+      } else if (obj.password && obj.email) {
+        alert(`Password ${obj.password[0]} and Email ${obj.email[0]}`)
+      } else if (obj.password) {
+        alert(`Password ${obj.password[0]}`)
+      } else if (obj.email) {
+        alert(`Email ${obj.email[0]}`)
+      }
+    })
+    .catch(errors => console.log(errors))
+
+})

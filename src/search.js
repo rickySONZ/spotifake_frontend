@@ -1,6 +1,6 @@
 
 //Adding a search bar that is called upon login and registration
-function appendSearchBar(){
+function appendSearchBar() {
     let searchBar = document.createElement('input')
     searchBar.type = 'text'
     searchBar.placeholder = "Please Search Song Here/ Check Them to Add to Library"
@@ -17,42 +17,42 @@ function appendSearchBar(){
     document.body.append(searchBarDiv)
     searchBarDiv.append(searchBarForm)
     searchBarForm.append(searchBar, searchSubmit)
-    
-    searchBarForm.addEventListener("submit", (e)=> {
+
+    searchBarForm.addEventListener("submit", (e) => {
         e.preventDefault()
         let searched = searchBar.value.split(" ")
-        for (const i in searched){
+        for (const i in searched) {
             searched[i] = searched[i].charAt(0).toUpperCase() + searched[i].substr(1)
         }
         let capitalizedSearched = searched.join(" ")
         debugger
         if (searchBar.value != "" && searchBar.value != "undefined") {
-        modalPopUpSearch()
-        fetch("https://spotifake-api.herokuapp.com/songs/search", {
-            method: "POST",
-            headers:{
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-              body: JSON.stringify({
-                 search_song_title: capitalizedSearched
-              })
-        })
-        .then(res => res.json())
-        .then(object => {
-            console.log(object)
-            for (const i in object){
-                
-                s = new Song(object[i])
-                s.addSearchedSong()
-            }
-        })
+            modalPopUpSearch()
+            fetch("https://spotifake-api.herokuapp.com/songs/search", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    search_song_title: capitalizedSearched
+                })
+            })
+                .then(res => res.json())
+                .then(object => {
+                    console.log(object)
+                    for (const i in object) {
+
+                        s = new Song(object[i])
+                        s.addSearchedSong()
+                    }
+                })
         }
     })
 }
 
 //Function for adding a modal window with song search results where the user can click and add a song to their lib
-function modalPopUpSearch(){
+function modalPopUpSearch() {
     let modalDiv = document.createElement('div')
     modalDiv.classList.add('modal', 'is-active')
     document.body.append(modalDiv)
@@ -61,7 +61,7 @@ function modalPopUpSearch(){
     closeButton.setAttribute('aria-label', 'close')
     let sessionID = sessionStorage.userID
 
-   modalDiv.innerHTML = `
+    modalDiv.innerHTML = `
    <div class="modal-background"></div>
    <div class="modal-content">
    <h1 class = "title" >Search results from Spotify</h1>
@@ -70,42 +70,42 @@ function modalPopUpSearch(){
    </div>
    <button class="modal-close is-large" aria-label="close"></button>
  `
- modalDiv.append(closeButton)
+    modalDiv.append(closeButton)
 
- //Event Listener for liking songs from search
- closeButton.addEventListener("click", () => {
-     let buttons = document.querySelectorAll('button.add-button')
-     let checkedButtons = []
-     //pulling buttons where they have been checked to create new liked song
-     for (const i in buttons){
-        if (buttons[i].innerHTML === "✓"){
-            checkedButtons.push(parseInt(buttons[i].parentElement.dataset.id))
-    }
-}
+    //Event Listener for liking songs from search
+    closeButton.addEventListener("click", () => {
+        let buttons = document.querySelectorAll('button.add-button')
+        let checkedButtons = []
+        //pulling buttons where they have been checked to create new liked song
+        for (const i in buttons) {
+            if (buttons[i].innerHTML === "✓") {
+                checkedButtons.push(parseInt(buttons[i].parentElement.dataset.id))
+            }
+        }
 
-//Getting rid of modal window
-modalDiv.remove()
-//Making patch request to library, server is set up to return liked songs/ songs
-fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}`, {
-    method: 'PATCH',
-    headers:{
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-         song_ids: checkedButtons,
-         library: localStorage.library
-      })
-})
-.then(res => res.json())
-.then(object =>{
-    let obj = object
-    let libraryList = document.querySelector('.library-list')
-    libraryList.innerHTML = ""
-    console.log(obj)
-    createLikedSongsFromArray(object)
-})
-})
+        //Getting rid of modal window
+        modalDiv.remove()
+        //Making patch request to library, server is set up to return liked songs/ songs
+        fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify({
+                song_ids: checkedButtons,
+                library: localStorage.library
+            })
+        })
+            .then(res => res.json())
+            .then(object => {
+                let obj = object
+                let libraryList = document.querySelector('.library-list')
+                libraryList.innerHTML = ""
+                console.log(obj)
+                createLikedSongsFromArray(object)
+            })
+    })
 
 }
 

@@ -1,6 +1,6 @@
 
-function fetchLibraryAfterLogin(){
-    if (localStorage.library != ""){
+function fetchLibraryAfterLogin() {
+    if (localStorage.library != "") {
         let libraryDiv = document.createElement('div')
         libraryDiv.classList.add('library-div', 'container')
         let libraryList = document.createElement('ul')
@@ -13,15 +13,15 @@ function fetchLibraryAfterLogin(){
         libraryDiv.append(libraryTitle, libraryList)
         let sessionID = sessionStorage.userID
 
-    document.body.append(libraryDiv)
-    fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
-    .then(res => res.json())
-    .then(object => {
-        console.log(object)
-        createLikedSongsFromArray(object)
-        
-    })
-  
-    .catch(err => console.error(err))
+        document.body.append(libraryDiv)
+        fetch(`https://spotifake-api.herokuapp.com/users/${sessionID}/libraries/${localStorage.library}/liked_songs`)
+            .then(res => res.json())
+            .then(object => {
+                console.log(object)
+                createLikedSongsFromArray(object)
+
+            })
+
+            .catch(err => console.error(err))
     }
 }
